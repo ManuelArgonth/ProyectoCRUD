@@ -30,20 +30,14 @@
                             <td><%=productos[i].p_fregistro.toDateString()%></td>
                             <td><%=productos[i].p_fupdate%></td>
                             <td>
-                                <a href="/eliminar/<%=productos[i].id_producto%>" class="btn btn-danger" id="eliminar">E</a>
+                                <a href="/eliminar/<%=productos[i].id_producto%>" class="btn btn-danger" onclick=" return confirm ('¿Eliminar registro?')>E</a>
                                 <a href="/editar/<%=productos[i].id_producto%>" class="btn btn-info">M</a>
                             </td>
                         </tr>
                     <% } %>
                 </table>
             </div>
-
-
-
-
-
-
-            <div class="col">
+        <div class="col">
                 <form action="/productos" method="post" >
                     <h3 class="card-title">Ingresar producto</h3>
                     <div class="form-group">
@@ -66,18 +60,5 @@
             </div>
         </div>
     </div>
-
-    
-    <script type="text/javascript">
-        (function() {
-          var form = document.getElementById('eliminar');
-          form.addEventListener('submit', function(event) {
-            // si es false entonces que no haga el submit
-            if (!confirm('Realmente desea eliminar?')) {
-              event.preventDefault();
-            }
-          }, false);
-        })();
-      </script>
 </body>
 </html>
