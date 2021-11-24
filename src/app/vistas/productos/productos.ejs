@@ -15,6 +15,7 @@
                         <th>Codigo producto</th>
                         <th>Nombre producto</th>
                         <th>Descripción producto</th>
+                    
                         <th>Precio</th>
                         <th>Fecha de registro</th>
                         <th>Fecha de modificación</th>
@@ -29,13 +30,19 @@
                             <td><%=productos[i].p_fregistro.toDateString()%></td>
                             <td><%=productos[i].p_fupdate%></td>
                             <td>
-                                <a href="/eliminar/<%=productos[i].id_producto%>" class="btn btn-danger">E</a>
+                                <a href="/eliminar/<%=productos[i].id_producto%>" class="btn btn-danger" id="eliminar">E</a>
                                 <a href="/editar/<%=productos[i].id_producto%>" class="btn btn-info">M</a>
                             </td>
                         </tr>
                     <% } %>
                 </table>
             </div>
+
+
+
+
+
+
             <div class="col">
                 <form action="/productos" method="post" >
                     <h3 class="card-title">Ingresar producto</h3>
@@ -59,7 +66,18 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+    
+    <script type="text/javascript">
+        (function() {
+          var form = document.getElementById('eliminar');
+          form.addEventListener('submit', function(event) {
+            // si es false entonces que no haga el submit
+            if (!confirm('Realmente desea eliminar?')) {
+              event.preventDefault();
+            }
+          }, false);
+        })();
+      </script>
 </body>
 </html>
